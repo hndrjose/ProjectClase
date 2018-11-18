@@ -1,0 +1,65 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="login100-form validate-form flex-sb flex-w">
+                <span class="login100-form-title p-b-51">
+						Registrate Ahora
+					</span>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" formControlName="nombre" name="nombre" type="text" required placeholder="nombre">
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" formControlName="correo" name="correo" type="correo" required placeholder="correo">
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" formControlName="password" name="password" type="password" required placeholder="Contraceña">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" formControlName="password2" name="password2" type="password" required placeholder="Confirmar Contraceña">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+                    <p class="text-danger">
+                        La Contraceña debe de ser Iguales
+                    </p>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" formControlName="condiciones" name="condiciones" id="ckb1" type="checkbox">
+                        <label class="label-checkbox100" for="ckb1">
+								Acepto el Acuerdo
+							</label>
+                    </div>
+                    <div>
+                        <a routerLink="/login" class="txt1">
+                                    Ya Tienes una cuenta
+                                </a>
+                    </div>
+
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+							Aceptar
+						</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
