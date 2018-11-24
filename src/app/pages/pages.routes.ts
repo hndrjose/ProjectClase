@@ -6,6 +6,7 @@ import { LoginGuardGuard } from '../service/service.index';
 
 // pages
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AccountSettingComponent } from './account-setting/account-setting.component';
 
 
 
@@ -18,6 +19,7 @@ const pagesRouter: Routes = [
         component: PagesComponent,
         canActivate: [ LoginGuardGuard ],
         children: [
+            { path: 'account', component: AccountSettingComponent },
             { path: 'dashboard', component: DashboardComponent },
         { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]

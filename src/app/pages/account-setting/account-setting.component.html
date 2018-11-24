@@ -1,3 +1,40 @@
-<p>
-  account-setting works!
-</p>
+<div class="wrap-login100 p-t-50 p-b-90">
+
+    <form ngNativeValidate #f="ngForm" class="login100-form validate-form flex-sb flex-w">
+
+        <div class="wrap-input100 validate-input m-b-16">
+            <input [ngModel]="usuario.nombre" name="nombre" class="input100" type="email" required placeholder="Nombre del Usuario">
+            <span class="focus-input100"></span>
+        </div>
+
+
+        <div class="wrap-input100 validate-input m-b-16">
+            <input [ngModel]="usuario.email" name="email" class="input100" type="password" required placeholder="La Contraceña de Usuario">
+            <span class="focus-input100"></span>
+        </div>
+
+
+        <div class="container-login100-form-btn m-t-17">
+            <button class="login100-form-btn" type="submit">
+						Salvar
+						</button>
+        </div>
+
+    </form>
+</div>
+
+<div class="col-md-5 p-3 mb-2 bg-light text-dark ">
+    <h2> </h2>
+    <br>
+    <img class="center">
+    <img class="center">
+    <input type="file" (change)="seleccionImage($event.target.files[0])">
+    <br>
+    <p></p>
+
+    <div class="form-group row">
+        <div class="col-sm-10 ">
+            <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="submit " class="btn btn-primary "> <i class="fa fa-save"></i> Actualizar Foto</button>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { UsuarioService, LoginGuardGuard} from './service.index';
+import { UsuarioService, LoginGuardGuard, SubirArchivoService} from './service.index';
+
 
 
 
@@ -16,6 +17,7 @@ import { UsuarioService, LoginGuardGuard} from './service.index';
       ],
       providers: [
           UsuarioService,
+          SubirArchivoService,
           LoginGuardGuard
       ],
       declarations: [

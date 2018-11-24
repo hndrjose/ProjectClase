@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import swal from 'sweetalert';
 import { UsuarioService } from '../service/service.index';
 import { Usuario } from '../models/usuarios.model';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-register',
@@ -20,7 +17,6 @@ export class RegisterComponent implements OnInit {
   constructor( public _usuarioService: UsuarioService,
     public router: Router
     ) { }
-
 
   sonIguales( campo1: string, campo2: string ) {
 
@@ -44,13 +40,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
 
     this.forma = new FormGroup({
-
       nombre: new FormControl( null, Validators.required ),
       correo: new FormControl( null, [Validators.required, Validators.email] ),
       password: new FormControl(null, Validators.required ),
       password2: new FormControl(null, Validators.required ),
       condiciones: new FormControl( false )
-
     }, { validators: this.sonIguales('password', 'password2') });
 
       // Esta instancia del odjeto solo llena los campos autmaticamente con el funcion setValue({})

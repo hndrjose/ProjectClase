@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../models/usuarios.model';
 import { URL_SERVICIO } from '../../config/config';
-
-// import { retry, map, filter } from 'rxjs/operators';
-
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subir-Archivo/subir-archivo.service';
+
 
 
 @Injectable()
@@ -15,7 +14,7 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
 
-  constructor( public http: HttpClient, public router: Router ) {
+  constructor( public http: HttpClient, public router: Router, public _subirArchivoService: SubirArchivoService ) {
     this.cargarStorage();
     console.log('Servicio del Usuario Listo');
    }
@@ -45,8 +44,6 @@ export class UsuarioService {
 
    }
 
-
-
    logout() {
     this.usuario = null;
     this.token = '';
@@ -57,7 +54,6 @@ export class UsuarioService {
     this.router.navigate(['/login']);
   }
 
-
    login( usuario: Usuario, recordar: boolean = false) {
     if ( recordar ) {
       localStorage.setItem('email', usuario.email );
@@ -65,7 +61,6 @@ export class UsuarioService {
       localStorage.removeItem('email');
     }
     const url = URL_SERVICIO + '/login';
-
     return this.http.post(url, usuario)
           .map( (resp: any) => {
           //  localStorage.setItem('id', resp.id);
@@ -88,6 +83,22 @@ export class UsuarioService {
       //   swal('Usuario Creado', usuario.email, 'success');
         return resp.usuario;
        });
+  }
+
+  cambiarImagen( archivo: File, id: string ) {
+
+    this._subirArchivoService.subirArchivo( archivo, 'usuarios', id )
+          .then( (resp: any) => {
+
+            this.usuario.img = resp.usuario.img;
+            swal( 'Imagen Actualizada', this.usuario.nombre, 'success' );
+            this.guardarStorage( id, this.token, this.usuario );
+
+          })
+          .catch( resp => {
+            console.log( resp );
+          }) ;
+
   }
 
 }
